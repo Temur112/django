@@ -1,0 +1,15 @@
+{%extends 'myapp/base.html' %}
+{%block content%}
+
+<div class="flex p-10 w-full h-200">
+    <img class="w-1/3" src="{{product.image.url}}">
+    <div class="w-2/3 text-xl ml-7">
+        <div class="mt-5">{{product.name}}</div>
+        <div class="mt-5 text-green-700"> ${{product.price}}</div>
+        <div class="mt-5">{{product.description}}</div>
+        <div class="mt-5">Posted by:<a href="{% url 'users:seller_profile' product.seller_name.id%}">{{product.seller_name.username}}</a></div>
+        <div class="mt-5">Conatct number:{{product.seller_name.profile.contact_number}}</div>
+    </div>
+</div>
+
+{%endblock%}

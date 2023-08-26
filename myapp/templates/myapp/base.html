@@ -1,0 +1,39 @@
+{%load static%}
+<html>
+    <head>
+        <link rel="stylesheet" href="{% static 'myapp/styles.css' %}"
+    </head>
+    <body>
+        <nav class="bg-white shadow-lg">
+            <div class="max-w-6xl mx-auto px-4">
+                <div class="flex justify-between">
+                    <div class="flex space-x-7">
+                        <div>
+                            <a href="{%url 'myapp:products'%}" class="flex px-2 py-4 items-center">
+                                <img class="h-9 w-9" src="{% static 'myapp/images/logo.png'%}", alt="There is an logo">
+                                <span class="text-gray-500 font-semibold text-lg">Buy&SEll</span>
+                            </a>
+                        </div>
+                        <div class="items-center space-x-1 flex">
+                            <a href="" class="py-4 px-2 text-gray-500 font-semibold border-green-500 border-b-2">Home</a>
+                            <a href="{%url 'myapp:products'%}" class="py-4 px-2 text-gray-500 font-semibold">View Products</a>
+                            <a href="{%url 'myapp:add_product'%}" class="py-4 px-2 text-gray-500 font-semibold">Post and Add</a>
+                            <div class="pl-50">
+                                {%if user.is_authenticated %}
+                                    <a class="py-4 px-4 text-gray-500 font-semibold" href='{% url 'users:logout' %}'>Log out</a>
+                                    <a class="py-4  text-gray-500 font-semibold" href='{% url 'users:profile' %}'>Profile</a>
+                                    <a class=" px-5 text-gray-500 font-semibold" href='{% url 'myapp:mylistings' %}'>My listings</a>
+                                {%else%}
+                                    <a class = "py-4 px-10 text-gray-500 font-semibold" href='{% url 'users:login'%}'>Login</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        {% block content %}
+
+        {% endblock %}
+    </body>
+</html>

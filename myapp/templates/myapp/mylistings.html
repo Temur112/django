@@ -1,0 +1,24 @@
+{%extends 'myapp/base.html'%}
+{%block content%}
+<div class="m-10 p-10 text-2xl font-bold">
+    My lsitings
+</div>
+{% for product in products%}
+    <div class="itemcontainer flex shadow-lg m-10 p-10">
+        <span class="w-1/5">
+            <img src="{{product.image.url}}" class="w-40 h-40">
+        </span>
+        <span class="w-3/5">
+            <div class="font-bold text-gray-700"> {{product.name}} </div>
+            <div class="text-green-500">$ {{product.price}} </div>
+            <div> {{product.description}} </div>
+        </span>
+        <span class="w-1/5 m-10">
+            <a href="{%url 'myapp:update_product' product.id %}"class="font-bold px-5 py-2 text-white bg-green-500">Edit</a> 
+        </span>
+        <span class="w-1/5 m-10">
+            <a href="{%url 'myapp:delete_product' product.id%}" class="font-bold px-5 py-2 text-white bg-red-500">Delete</a> 
+        </span>
+    </div>
+{% endfor%}
+{%endblock%}
